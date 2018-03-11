@@ -12,8 +12,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author Mohammad
  */
-public interface IHUserRepository extends CrudRepository<IHUser, Long>{
-    
+public interface IHUserRepository extends CrudRepository<IHUser, Long>{  
     //IHUser findById(Long id);
     
     IHUser findByUsername(String username);
