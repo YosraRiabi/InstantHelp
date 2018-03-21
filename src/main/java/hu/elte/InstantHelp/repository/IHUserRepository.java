@@ -7,18 +7,18 @@ package hu.elte.InstantHelp.repository;
 
 import hu.elte.InstantHelp.model.IHUser;
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository;       
 /**
  *
  * @author Mohammad
  */
-public interface IHUserRepository extends CrudRepository<IHUser, Long>{  
+public interface IHUserRepository extends CrudRepository<IHUser, String>{  
     
-    //IHUser findById(Long id);
+    public IHUser findById(Long id);
     
-    IHUser findByUsername(String username);
+    public IHUser findByUsername(String username);
     
     @Override
-    List<IHUser> findAll();
+    public List<IHUser> findAll();
     
 }

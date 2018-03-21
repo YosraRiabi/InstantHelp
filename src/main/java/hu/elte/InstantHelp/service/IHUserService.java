@@ -24,9 +24,9 @@ public class IHUserService {
         return userRepository.findByUsername(username);
     }
        
-    /*public IHUser findById(long id){
+    public IHUser findById(Long id){
         return userRepository.findById(id);
-    }*/
+    }
     
     public List<IHUser> allTeachers() {
         return userRepository.findAll();
