@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package hu.elte.InstantHelp.model;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,5 +36,24 @@ public class Call {
     private Type type;    
     public enum Type {
         Video, Audio
+    }
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private IHUser sender;   
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private IHUser receiver;   
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Call )) return false;
+        return (id != (Long)null) && (id==(((Call) o).id));
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

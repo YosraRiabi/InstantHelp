@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package hu.elte.InstantHelp.model;
-import java.util.*;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.*;
 /**
  *
  * @author Mohammad
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Competence {
+public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -25,8 +25,8 @@ public class Competence {
     @Column(name="name", nullable=false, length=100)
     private String name;
     
-    @Column(name="description", columnDefinition = "TEXT", nullable=true, length=500)
-    private String description;
+    @Column(name="code", nullable=false, length=50)
+    private String code;
     
     @ManyToMany(mappedBy = "languages")
     private List<IHUser> users = new ArrayList<>();
@@ -34,8 +34,8 @@ public class Competence {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Competence )) return false;
-        return (id != (Long)null) && (id==(((Competence) o).id));
+        if (!(o instanceof Language )) return false;
+        return (id != (Long)null) && (id==(((Language) o).id));
     }
     @Override
     public int hashCode() {

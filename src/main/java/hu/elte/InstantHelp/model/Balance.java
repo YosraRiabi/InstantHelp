@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package hu.elte.InstantHelp.model;
-import java.util.Date;
+import java.util.*;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +27,20 @@ public class Balance {
     
     @Column(name="depositdate", nullable=true, length=50)
     private Date depositdate;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private IHUser user;   
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Balance )) return false;
+        return (id != (Long)null) && (id==(((Balance) o).id));
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    
 }

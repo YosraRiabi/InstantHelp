@@ -28,7 +28,7 @@ public class IHUserService {
         return userRepository.findById(id);
     }
     
-    public List<IHUser> allTeachers() {
+    public List<IHUser> allUsers() {
         return userRepository.findAll();
     }
 }
